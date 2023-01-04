@@ -4,6 +4,7 @@ import './assets/global.scss'
 import App from './App.vue'
 import router from './router'
 import PrimeVue from 'primevue/config'
+
 import Button from 'primevue/button'
 import DataView from 'primevue/dataview'
 import Dropdown from 'primevue/dropdown'

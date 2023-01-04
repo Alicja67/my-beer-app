@@ -1,7 +1,9 @@
 <template>
   <div class="grid">
-    <Button @click="goBack" class="cursor-pointer surface-800 back">Back</Button>
-    <div class="col-3 pt-5">
+    <Button @click="goBack" class="cursor-pointer surface-800 back"
+      >Back</Button
+    >
+    <div class="col:12 md:col-3 pt-5 part">
       <Image
         :src="results.image_url"
         :alt="results.name"
@@ -14,10 +16,12 @@
             {{ el }}
           </li>
         </ul>
-        <Tag class="text-2xl p-2 mt-4 surface-700 pl-4 pr-4">Author: {{ author }}</Tag>
+        <Tag class="text-2xl p-2 mt-4 surface-700 pl-4 pr-4"
+          >Author: {{ author }}</Tag
+        >
       </div>
     </div>
-    <div class="col-9 text-left pt-8 pr-8 pb-8">
+    <div class="col:12 md:col-9 text-left p-6">
       <Card style="height: 100%">
         <template #title> {{ results.name }} </template>
         <template #subtitle>
@@ -112,6 +116,9 @@ export default defineComponent({
     opacity: 0;
     margin: 6% 0;
     animation-fill-mode: forwards;
+    @media screen and (max-width: 767px) {
+      font-size: 2em;
+    }
   }
   .p-card-subtitle {
     font-size: 1.3em;
@@ -124,12 +131,19 @@ export default defineComponent({
     .p-tag:hover {
       animation: grow 0.5s;
     }
+    @media screen and (max-width: 767px) {
+      .p-tag-value {
+        font-size: 0.4em;
+      }
+    }
   }
   .p-card-content {
     font-size: 2.5em;
     line-height: 1.5;
+    @media screen and (max-width: 767px) {
+      font-size: 1em;
+    }
   }
-  
 }
 ::v-deep(.p-button) {
   position: absolute;
@@ -145,5 +159,17 @@ export default defineComponent({
 }
 ::v-deep(.p-tag:hover) {
   animation: grow 0.5s;
+}
+::v-deep(.part) {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6em;
+    .p-image {
+      margin: 0 1em;
+    }
+  }
 }
 </style>
