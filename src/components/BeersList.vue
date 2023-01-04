@@ -8,7 +8,7 @@
     >
       <Card style="width: 20em; height: 10em; background-color: #edede9">
         <template #title> {{ beer.name }} </template>
-        <template #footer>
+        <template #content>
           <div class="flex align-items-center justify-content-center flex-row">
             <Tag class="mr-2" :value="'IBU: ' + beer.ibu"></Tag>
             <Tag
@@ -65,14 +65,21 @@ export default defineComponent({
   .p-card-body {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
   .p-card-title {
     font-size: 1.7em;
     font-family: 'Abril Fatface', cursive;
     flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
-  .p-card-footer {
-    flex: none;
+  .p-tag:hover {
+    animation: grow 0.5s;
   }
+}
+::v-deep(.p-card:hover) {
+  animation: grow 0.5s;
 }
 </style>

@@ -4,12 +4,10 @@
       <p>Beer index</p>
       <nav class="grid p-fluid">
         <div class="col-12 md:col-3">
-          <div class="p-inputgroup">
+          <span class="p-input-icon-left">
+            <i class="pi pi-search" />
             <InputText placeholder="Search by name" v-model="searchName" />
-            <span class="p-inputgroup-addon">
-              <i class="pi pi-search"></i>
-            </span>
-          </div>
+          </span>
         </div>
 
         <div class="col-12 md:col-3">
@@ -52,8 +50,8 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, Ref } from "vue";
 import axios from "axios";
-import BeerType from '../types/Beer';
-import BeersList from '../components/BeersList.vue';
+import BeerType from "../types/Beer";
+import BeersList from "../components/BeersList.vue";
 
 export default defineComponent({
   name: "Home",
