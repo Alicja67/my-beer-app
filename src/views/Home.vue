@@ -46,7 +46,7 @@
         </div>
       </nav>
     </div>
-    <!-- <beers-list :beers="results" :searchName="searchName"></beers-list> -->
+    <beers-list :beers="results" :searchName="searchName"></beers-list>
   </div>
 </template>
 <script lang="ts">
@@ -151,12 +151,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .app {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
-  width: 1920px;
-  overflow: hidden;
-
   .header {
     display: flex;
     flex-direction: row;
@@ -166,6 +161,7 @@ export default defineComponent({
     height: 12%;
     background: rgb(58, 56, 56);
     position: fixed;
+    z-index: 1;
 
     p {
       font-size: 30px;
@@ -177,7 +173,7 @@ export default defineComponent({
 }
 @media screen and (max-width: 850px) {
   .app {
-    width: 100%;
+    // width: 100%;
     .header {
       justify-content: center;
       align-items: center;
