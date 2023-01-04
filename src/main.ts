@@ -9,8 +9,9 @@ import DataView from 'primevue/dataview'
 import Dropdown from 'primevue/dropdown'
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card'
-import Tag from 'primevue/tag'
 import Ripple from 'primevue/ripple'
+import Image from 'primevue/image';
+import Tag from 'primevue/tag'
 
 
 const app = createApp(App)
@@ -22,8 +23,9 @@ app.component('Button', Button)
 app.component('DataView', DataView)
 app.component('Dropdown', Dropdown)
 app.component('InputText', InputText)
-app.component('Tag ', Tag)
+app.component('Tag', Tag)
 app.component('Card', Card)
+app.component('Image', Image)
 
 app.directive('ripple', Ripple)
 

@@ -6,7 +6,7 @@
       :key="beerIndex"
       @click="goToBeer(beer.id)"
     >
-      <Card style="width: 20em; height: 10em; background-color: #edede9">
+      <Card style="height: 10em; background-color: #edede9">
         <template #title> {{ beer.name }} </template>
         <template #content>
           <div class="flex align-items-center justify-content-center flex-row">
@@ -62,6 +62,8 @@ export default defineComponent({
   }
 }
 ::v-deep(.p-card) {
+ min-width: 20em;
+ width: 25em;
   .p-card-body {
     display: flex;
     flex-direction: column;
@@ -74,6 +76,12 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     display: flex;
+  }
+  .p-tag:first-child {
+    background-color: rgb(144, 97, 97)
+  }
+  .p-tag:nth-child(2) {
+    background-color: rgb(106, 121, 52)
   }
   .p-tag:hover {
     animation: grow 0.5s;

@@ -6,13 +6,13 @@
         <div class="col-12 md:col-3">
           <span class="p-input-icon-left">
             <i class="pi pi-search" />
-            <InputText placeholder="Search by name" v-model="searchName" />
+            <InputText placeholder="Search by name" v-model="searchName" @keyup.enter="handleSearch" />
           </span>
         </div>
 
         <div class="col-12 md:col-3">
           <div class="p-inputgroup">
-            <InputText placeholder="Search by IBU" v-model="searchIbu" />
+            <InputText placeholder="Search by IBU" v-model="searchIbu" @keyup.enter="handleSearch" />
             <div @click="toggleIbu">
               <div v-if="ibuOption">
                 <Button icon="pi pi-caret-down"></Button>
@@ -70,7 +70,7 @@ export default defineComponent({
         getApiData();
         searchName.value = "";
       } else if (searchIbu.value !== null && searchName.value === "") {
-        console.log("Podano tylko ibu");
+        console.log("Podano tylko ibu", ibu_gt);
         if (ibu_gt) {
           url.value = `https://api.punkapi.com/v2/beers?ibu_gt=${searchIbu.value}`;
         } else {
