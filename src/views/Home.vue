@@ -1,18 +1,28 @@
 <template>
-  <div class="app">
-    <div class="header">
-      <p>Beer index</p>
-      <nav class="grid p-fluid">
-        <div class="col-12 md:col-3">
+  <div class="grid">
+    <div
+      class="col-12 surface-900 p-4 flex flex-row justify-content-between align-content-center"
+    >
+      <p class="text-2xl text-white">Beer index</p>
+      <nav class="grid p-fluid justify-content-end align-items-center mr-1">
+        <div class="col-12 md:col-4">
           <span class="p-input-icon-left">
             <i class="pi pi-search" />
-            <InputText placeholder="Search by name" v-model="searchName" @keyup.enter="handleSearch" />
+            <InputText
+              placeholder="Search by name"
+              v-model="searchName"
+              @keyup.enter="handleSearch"
+            />
           </span>
         </div>
 
         <div class="col-12 md:col-3">
           <div class="p-inputgroup">
-            <InputText placeholder="Search by IBU" v-model="searchIbu" @keyup.enter="handleSearch" />
+            <InputText
+              placeholder="Search by IBU"
+              v-model="searchIbu"
+              @keyup.enter="handleSearch"
+            />
             <div @click="toggleIbu">
               <div v-if="ibuOption">
                 <Button icon="pi pi-caret-down"></Button>
@@ -24,9 +34,9 @@
           </div>
         </div>
 
-        <div class="col-6 md:col-3">
+        <div class="col-6 md:col-2">
           <Button
-            class="form-button p-button-success p-button-rounded"
+            class="form-button p-button-success"
             icon="pi pi-check-circle"
             type="submit"
             @click="handleSearch"
@@ -34,9 +44,9 @@
           ></Button>
         </div>
 
-        <div class="col-6 md:col-3">
+        <div class="col-6 md:col-2">
           <Button
-            class="form-button p-button-warning p-button-rounded"
+            class="form-button p-button-warning"
             icon="pi pi-times-circle"
             @click="handleReset"
             label="Clear"
@@ -44,7 +54,19 @@
         </div>
       </nav>
     </div>
-    <beers-list :beers="results" :searchName="searchName"></beers-list>
+
+    <beers-list
+      class="col-12"
+      :beers="results"
+      :searchName="searchName"
+    ></beers-list>
+    <Paginator
+      class="col-12 flex justify-content-end align-content-end"
+      :rows="rows"
+      :totalRecords="totalItemsCount"
+      @page="onPage($event)"
+    ></Paginator>
+    <!-- <pagination-page class="pagination"></pagination-page> -->
   </div>
 </template>
 <script lang="ts">
@@ -52,16 +74,28 @@ import { computed, defineComponent, onMounted, ref, Ref } from "vue";
 import axios from "axios";
 import BeerType from "../types/Beer";
 import BeersList from "../components/BeersList.vue";
+// import PaginationPage from "../components/PaginationPage.vue";
 
 export default defineComponent({
   name: "Home",
   components: { BeersList },
   setup() {
     let results = ref<BeerType[]>([]);
-    let searchName = ref("");
+    let searchName = ref('');
+    const totalItemsCount = ref(100);
+    const rows = (25);
     let searchIbu: Ref<number | null> = ref(null);
     let ibu_gt = ref(false);
     let url = ref("https://api.punkapi.com/v2/beers");
+
+    const onPage = (event: any) => {
+      console.log(event);
+      url.value = `https://api.punkapi.com/v2/beers?page=${
+        event.page + 1
+      }&per_page=25`;
+      // console.log('url', url.value);
+      getApiData();
+    };
 
     function handleSearch() {
       if (searchName.value !== "" && searchIbu.value === null) {
@@ -143,50 +177,17 @@ export default defineComponent({
       toggleIbu,
       ibu_gt,
       ibuOption,
+      onPage,
+      totalItemsCount,
+      rows,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-.app {
-  height: 100vh;
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 12%;
-    background: rgb(58, 56, 56);
-    position: fixed;
-    z-index: 1;
-
-    p {
-      font-size: 30px;
-      color: white;
-      z-index: 1;
-      margin-left: 20px;
-    }
-  }
-}
-@media screen and (max-width: 850px) {
-  .app {
-    // width: 100%;
-    .header {
-      justify-content: center;
-      align-items: center;
-
-      p {
-        display: none;
-      }
-    }
-  }
-}
-@media screen and (max-width: 767px) {
-  .app {
-    .header {
-      height: 20%;
-    }
+p {
+  @media screen and (max-width: 850px) {
+    display: none;
   }
 }
 </style>

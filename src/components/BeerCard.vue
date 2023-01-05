@@ -21,7 +21,7 @@
         >
       </div>
     </div>
-    <div class="col:12 md:col-9 text-left p-6">
+    <div class="col:12 md:col-9 text-left p-6 pt-8">
       <Card style="height: 100%">
         <template #title> {{ results.name }} </template>
         <template #subtitle>
@@ -85,15 +85,6 @@ export default defineComponent({
       this.author = match;
     },
   },
-  // computed: {
-  //     catchNickname(name: string) {
-  //       const regex = new RegExp(/\[(.*?)\]/);
-  //       const aaa = 'Autor <dasfsdaf>';
-  //       const matched = aaa.match(regex);
-  //       console.log(matched);
-  //       return matched
-  //     },
-  //   },
   mounted() {
     this.getApiData();
   },
@@ -102,7 +93,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .grid {
   background: rgb(239, 235, 235);
-  height: 100%;
+  height: 100vh;
 }
 ::v-deep(.p-card) {
   .p-card-title {
@@ -115,6 +106,7 @@ export default defineComponent({
     animation-fill-mode: forwards;
     opacity: 0;
     margin: 6% 0;
+    line-height: 1;
     animation-fill-mode: forwards;
     @media screen and (max-width: 767px) {
       font-size: 2em;
@@ -148,7 +140,7 @@ export default defineComponent({
 ::v-deep(.p-button) {
   position: absolute;
   top: 1%;
-  right: 1%;
+  right: 0.5%;
   color: white;
   font-size: 1.3em;
   transition: all 0.5s ease-in-out;

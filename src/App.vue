@@ -24,8 +24,7 @@ export default defineComponent({
   max-width: 1920px;
   height: 100%;
   width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  // overflow-y: auto;
 }
 </style>

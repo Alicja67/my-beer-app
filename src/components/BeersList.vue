@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <div
-      class="col-12 md:col-6 lg:col-4 xl:col-3 flex align-items-center justify-content-center"
+      class="col-12 md:col-6 lg:col-4 xl:col-4 flex align-items-center justify-content-center"
       v-for="(beer, beerIndex) in beers"
       :key="beerIndex"
       @click="goToBeer(beer.id)"
@@ -63,7 +63,8 @@ export default defineComponent({
 }
 ::v-deep(.p-card) {
  min-width: 20em;
- width: 25em;
+ width: 30em;
+ margin: 1em;
   .p-card-body {
     display: flex;
     flex-direction: column;

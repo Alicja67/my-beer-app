@@ -13,6 +13,7 @@ import Card from 'primevue/card'
 import Ripple from 'primevue/ripple'
 import Image from 'primevue/image';
 import Tag from 'primevue/tag'
+import Paginator from 'primevue/paginator'
 
 
 const app = createApp(App)
@@ -27,6 +28,7 @@ app.component('InputText', InputText)
 app.component('Tag', Tag)
 app.component('Card', Card)
 app.component('Image', Image)
+app.component('Paginator', Paginator)
 
 app.directive('ripple', Ripple)
 
