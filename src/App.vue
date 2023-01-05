@@ -22,9 +22,10 @@ export default defineComponent({
   padding: 0;
   margin: 0;
   max-width: 1920px;
-  height: 100%;
+  height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  // overflow-y: auto;
+  // overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>

@@ -79,9 +79,9 @@ export default defineComponent({
     },
     catchNickname(name: string) {
       const regex = /(?<=\<)(.*?)(?=\>)/;
-      const myArray = [];
+      // const myArray = [];
       const match = regex.exec(name)[0];
-      console.log(match);
+      // console.log(match);
       this.author = match;
     },
   },
