@@ -43,10 +43,10 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from "vue";
 import axios from "axios";
-import BeerType from "../types/Beer";
+import BeerInterface from "@/models/beer/Beer.interface";
 import { useRouter } from "vue-router";
 
-type BeerCardProps = { beerId: number };
+// type BeerCardProps = { beerId: number };
 
 export default defineComponent({
   name: "BeerCard",
@@ -56,8 +56,8 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props: BeerCardProps) {
-    const results = ref<BeerType>({});
+  setup() {
+    const results = ref<BeerInterface>({});
     const router = useRouter();
     const author = ref("");
     const goBack = () => {
@@ -80,9 +80,13 @@ export default defineComponent({
     catchNickname(name: string) {
       const regex = /(?<=\<)(.*?)(?=\>)/;
       // const myArray = [];
-      const match = regex.exec(name)[0];
+      if ( regex.exec(name)[0] ) {
+        this.author = regex.exec(name)[0];
+      } else {
+        this.author = '';
+      }
+      // const match = regex.exec(name)[0];
       // console.log(match);
-      this.author = match;
     },
   },
   mounted() {

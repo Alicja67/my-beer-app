@@ -24,10 +24,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import BeerType from "../types/Beer";
+import BeerInterface from "@/models/beer/Beer.interface";
 import Tag from "primevue/tag";
 import { useRouter } from "vue-router";
-// import PaginationPage from './PaginationPage.vue';
 
 export default defineComponent({
   name: "BeersList",
@@ -35,15 +34,15 @@ export default defineComponent({
   props: {
     beers: {
       required: true,
-      type: Array as PropType<BeerType[]>,
+      type: Array as PropType<BeerInterface[]>,
     },
   },
   setup(props) {
-    const filteredData = () => {
-      props.beers.forEach((item) => {
-        const match = new RegExp(props.searchName);
-      });
-    };
+    // const filteredData = () => {
+    //   props.beers.forEach((item) => {
+    //     const match = new RegExp(props.searchName);
+    //   });
+    // };
     const router = useRouter();
     const goToBeer = (id: number) => {
       router.push({ path: `/beer/${id}` });

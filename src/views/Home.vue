@@ -72,19 +72,19 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, Ref } from "vue";
 import axios from "axios";
-import BeerType from "../types/Beer";
-import BeersList from "../components/BeersList.vue";
+import BeerInterface from "@/models/beer/Beer.interface";
+import BeersList from "@/components/BeersList.vue";
 import { useToast } from "primevue/usetoast";
 
 export default defineComponent({
   name: "Home",
   components: { BeersList },
   setup() {
-    let results = ref<BeerType[]>([]);
+    let results = ref<BeerInterface[]>([]);
     let searchName = ref("");
     const totalItemsCount = ref(100);
     const rows = 25;
-    let searchIbu: Ref<number | null> = ref(null);
+    let searchIbu: Ref<number | null | any> = ref(null);
     let ibu_gt = ref(true);
     let url = ref("https://api.punkapi.com/v2/beers");
 
