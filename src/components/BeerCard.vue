@@ -1,14 +1,8 @@
 <template>
   <div class="grid">
-    <Button @click="goBack" class="cursor-pointer surface-800 back"
-      >Back</Button
-    >
+    <Button @click="goBack" class="cursor-pointer surface-800 back">Back</Button>
     <div class="col:12 md:col-3 pt-5 part">
-      <Image
-        :src="results.image_url"
-        :alt="results.name"
-        imageStyle="width: 8em; max-height: 30em"
-      ></Image>
+      <Image :src="results.image_url" :alt="results.name" imageStyle="width: 8em; max-height: 30em"></Image>
       <div class="grid-column">
         <h4 class="text-3xl">Food Pairing:</h4>
         <ul class="list-disc text-left pl-8">
@@ -16,9 +10,7 @@
             {{ el }}
           </li>
         </ul>
-        <Tag class="text-2xl p-2 mt-4 surface-700 pl-4 pr-4"
-          >Author: {{ author }}</Tag
-        >
+        <Tag class="text-2xl p-2 mt-4 surface-700 pl-4 pr-4">Author: {{ author }}</Tag>
       </div>
     </div>
     <div class="col:12 md:col-9 text-left p-6 pt-8">
@@ -28,11 +20,7 @@
           <div class="flex align-items-center justify-content-start flex-row">
             <Tag class="mr-3 text-xl" :value="results.tagline"></Tag>
             <Tag class="mr-3 text-xl" :value="'IBU: ' + results.ibu"></Tag>
-            <Tag
-              class="mr-3 text-xl"
-              severity="success"
-              :value="'ABV: ' + results.abv"
-            ></Tag>
+            <Tag class="mr-3 text-xl" severity="success" :value="'ABV: ' + results.abv"></Tag>
           </div>
         </template>
         <template #content> {{ results.description }}</template>
@@ -41,15 +29,15 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
-import axios from "axios";
-import BeerInterface from "@/models/beer/Beer.interface";
-import { useRouter } from "vue-router";
+import { computed, defineComponent, ref } from 'vue';
+import axios from 'axios';
+import BeerInterface from '@/models/beer/Beer.interface';
+import { useRouter } from 'vue-router';
 
 // type BeerCardProps = { beerId: number };
 
 export default defineComponent({
-  name: "BeerCard",
+  name: 'BeerCard',
   props: {
     beerId: {
       type: Number,
@@ -59,9 +47,9 @@ export default defineComponent({
   setup() {
     const results = ref<BeerInterface>({});
     const router = useRouter();
-    const author = ref("");
+    const author = ref('');
     const goBack = () => {
-      router.push({ path: "/" });
+      router.push({ path: '/' });
     };
     return { results, goBack, author };
   },
@@ -80,7 +68,7 @@ export default defineComponent({
     catchNickname(name: string) {
       const regex = /(?<=\<)(.*?)(?=\>)/;
       // const myArray = [];
-      if ( regex.exec(name)[0] ) {
+      if (regex.exec(name)[0]) {
         this.author = regex.exec(name)[0];
       } else {
         this.author = '';
@@ -101,7 +89,7 @@ export default defineComponent({
 }
 ::v-deep(.p-card) {
   .p-card-title {
-    font-family: "Abril Fatface", cursive;
+    font-family: 'Abril Fatface', cursive;
     font-size: 3.5em;
     animation-name: rotateRight;
     animation-duration: 1s;

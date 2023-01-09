@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import './style.css'
 import './assets/global.scss'
 import App from './App.vue'
@@ -19,8 +20,10 @@ import Toast from 'primevue/toast';
 
 
 const app = createApp(App)
+const pinia = createPinia()
 
 app.use(router)
+app.use(pinia)
 app.use(PrimeVue, {ripple: true})
 app.use(ToastService);
 

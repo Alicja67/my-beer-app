@@ -7,23 +7,23 @@ import router from '../router';
 
 export default defineComponent({
   name: 'PageNotFound',
-  setup(){
+  setup() {
     const goHome = () => {
       router.push('/');
-    }
+    };
 
     return {
       goHome,
-    }
-  }
+    };
+  },
 });
 </script>
 <style>
-  img {
-    /* max-width: 1920px;
+img {
+  /* max-width: 1920px;
     max-height: 1080px; */
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 </style>

@@ -11,11 +11,7 @@
         <template #content>
           <div class="flex align-items-center justify-content-center flex-row">
             <Tag class="mr-2" :value="'IBU: ' + beer.ibu"></Tag>
-            <Tag
-              class="mr-2"
-              severity="success"
-              :value="'Food Pairing: ' + beer.food_pairing.length"
-            ></Tag>
+            <Tag class="mr-2" severity="success" :value="'Food Pairing: ' + beer.food_pairing.length"></Tag>
           </div>
         </template>
       </Card>
@@ -23,13 +19,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import BeerInterface from "@/models/beer/Beer.interface";
-import Tag from "primevue/tag";
-import { useRouter } from "vue-router";
+import { defineComponent, PropType } from 'vue';
+import BeerInterface from '@/models/beer/Beer.interface';
+import Tag from 'primevue/tag';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
-  name: "BeersList",
+  name: 'BeersList',
   components: { Tag },
   props: {
     beers: {
@@ -61,9 +57,9 @@ export default defineComponent({
   }
 }
 ::v-deep(.p-card) {
- min-width: 20em;
- width: 30em;
- margin: 1em;
+  min-width: 20em;
+  width: 30em;
+  margin: 1em;
   .p-card-body {
     display: flex;
     flex-direction: column;
@@ -78,10 +74,10 @@ export default defineComponent({
     display: flex;
   }
   .p-tag:first-child {
-    background-color: rgb(144, 97, 97)
+    background-color: rgb(144, 97, 97);
   }
   .p-tag:nth-child(2) {
-    background-color: rgb(106, 121, 52)
+    background-color: rgb(106, 121, 52);
   }
   .p-tag:hover {
     animation: grow 0.5s;
